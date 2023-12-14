@@ -1,4 +1,5 @@
-// Get location by id
+# Example GraphQL Queries
+## Get location by id
 ```graphql
 query locationById {
     locationById(id: 10) {
@@ -17,7 +18,7 @@ query locationById {
 }
 ```
 
-# Response
+### Response
 ```json
 {
   "data": {
@@ -38,7 +39,7 @@ query locationById {
 }
 ```
 
-# Get location list by multiple ids
+## Get location list by multiple ids
 ```graphql
 query locationListByIds {
     locationListByIds(ids: [10,11]) {
@@ -57,7 +58,7 @@ query locationListByIds {
 }
 ```
 
-# Response
+### Response
 ```json
 {
   "data": {
@@ -93,7 +94,7 @@ query locationListByIds {
 }
 ```
 
-# Get location list with history by ids
+## Get location list with history by ids
 ```graphql
 query locationListWithHistoryByIds {
     locationListWithHistoryByIds(
@@ -117,7 +118,7 @@ query locationListWithHistoryByIds {
 }
 ```
 
-# Response
+### Response
 ```json
 {
   "data": {
