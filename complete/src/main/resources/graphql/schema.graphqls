@@ -1,5 +1,7 @@
 type Query {
     bookById(id: ID): Book
+    locationById(id: ID): Location
+    locationListByIds(ids: [ID!]!, snapshotDateStart: String, snapshotDateEnd: String, timeSeriesFields: [String]): [Location]
 }
 
 type Book {
@@ -14,3 +16,43 @@ type Author {
     firstName: String
     lastName: String
 }
+
+#type Project {
+#    id: ID
+#    name: String
+#}
+#
+#type Company {
+#    id: ID
+#    name: String
+#}
+
+#type Location {
+#    id: ID
+#    company: Company
+#    project: Project
+#    dailyLogCount: Int
+#    submittalCount: Int
+#    observationCount: Int
+#    rfiCount: Int
+#    inspectionCount: Int
+#    punchListCount: Int
+#    photosCount: Int
+#}
+
+type Location {
+    id: ID
+    snapshotDate: String
+    companyId: Int
+    projectId: Int
+    dailyLogCount: Int
+    submittalCount: Int
+    observationCount: Int
+    rfiCount: Int
+    inspectionCount: Int
+    punchListCount: Int
+    photosCount: Int
+    _historical: Object
+}
+
+scalar Object
