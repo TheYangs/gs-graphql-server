@@ -1,5 +1,6 @@
 package com.example.graphqlserver;
 
+import org.springframework.core.annotation.AliasFor;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -55,6 +56,23 @@ public final class Location extends HistoricalEntity {
                 .filter(author -> author.id().equals(id))
                 .max(Comparator.comparing(Location::snapshotDate))
                 .orElse(null);
+    }
+
+    public static List<Location> getByIds(List<String> ids) {
+        System.out.println("Location.getByIds: " + ids);
+
+        var filteredLocations = locations.stream()
+                .filter(item -> ids.contains(item.id()));
+
+        var locationMap = filteredLocations
+                .collect(Collectors.groupingBy(Location::id));
+
+        return locationMap.values().stream()
+                .map(list -> list.stream()
+                        .max(Comparator.comparing(Location::snapshotDate))
+                        .orElse(null))
+                .collect(Collectors.toList())
+                ;
     }
 
     public static List<Location> getByIds(List<String> ids, String snapshotDateStart, String snapshotDateEnd, List<String> timeSeriesFields) {

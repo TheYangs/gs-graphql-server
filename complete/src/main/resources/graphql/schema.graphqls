@@ -1,20 +1,7 @@
 type Query {
-    bookById(id: ID): Book
     locationById(id: ID): Location
-    locationListByIds(ids: [ID!]!, snapshotDateStart: String, snapshotDateEnd: String, timeSeriesFields: [String]): [Location]
-}
-
-type Book {
-    id: ID
-    name: String
-    pageCount: Int
-    author: Author
-}
-
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+    locationListByIds(ids: [ID!]!): [Location]
+    locationListByIdsWithHistory(ids: [ID!]!, snapshotDateStart: String, snapshotDateEnd: String, timeSeriesFields: [String]): [Location]
 }
 
 #type Project {
