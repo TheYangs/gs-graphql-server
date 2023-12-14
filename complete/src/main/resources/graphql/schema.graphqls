@@ -1,7 +1,7 @@
 type Query {
-    locationById(id: ID): Location
+    locationById(id: ID!): Location
     locationListByIds(ids: [ID!]!): [Location]
-    locationListByIdsWithHistory(ids: [ID!]!, snapshotDateStart: String, snapshotDateEnd: String, timeSeriesFields: [String]): [Location]
+    locationListWithHistoryByIds(ids: [ID!]!, snapshotDateStart: String, snapshotDateEnd: String, timeSeriesFields: [String]): [Location]
 }
 
 #type Project {
@@ -43,3 +43,5 @@ type Location {
 }
 
 scalar Object
+
+

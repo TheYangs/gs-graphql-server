@@ -10,7 +10,7 @@ import java.util.List;
 @Controller
 public class LocationController {
     @QueryMapping
-    public Location locationById(String id) {
+    public Location locationById(@Argument String id) {
         return Location.getById(id);
     }
 
@@ -46,8 +46,9 @@ query locationListByIds {
     public List<Location> locationListByIds(@Argument List<String> ids) {
         return Location.getByIds(ids);
     }
+
     @QueryMapping
-    public List<Location> locationListByIdsWithHistory(@Argument List<String> ids,
+    public List<Location> locationListWithHistoryByIds(@Argument List<String> ids,
                                             @Argument String snapshotDateStart,
                                             @Argument String snapshotDateEnd,
                                             @Argument List<String> timeSeriesFields) {
